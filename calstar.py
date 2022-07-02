@@ -76,12 +76,12 @@ def printanalytics(overallstats,limitfail):
         for i in range(multiple):
             for x in range(10):
                 percent = 100 * (counts[index] / float(num))
-                print(str(unique[index])+": "+"{:.2f}".format(percent)+"%",end=", ")
+                print(str(unique[index])+": "+"{:.3f}".format(percent)+"%",end=", ")
                 index += 1
             print()
         for i in range(remainder):
             percent = 100 * (counts[index] / float(num))
-            print(str(unique[index]) + ": " + "{:.2f}".format(percent) + "%", end=", ")
+            print(str(unique[index]) + ": " + "{:.3f}".format(percent) + "%", end=", ")
             index += 1
         print()
         print()
