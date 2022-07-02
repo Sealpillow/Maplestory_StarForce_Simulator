@@ -1,10 +1,12 @@
 # https://github.com/amphipath/starforce/blob/master/weights_en.csv
 # https://pynative.com/python-weighted-random-choices-with-probability/
 # https://towardsdatascience.com/a-complete-guide-to-using-progress-bars-in-python-aa7f4130cda8
+# https://www.adamsmith.haus/python/answers/how-to-count-frequency-of-unique-values-in-a-numpy-array-in-python
 import random
 from time import sleep
 from tqdm import tqdm
 from sfList import sf
+import numpy as np
 from math import *
 import os
 resultlist = ["Success", "Fail(Maintain)", "Fail(Decrease)", "Destroy"]
@@ -53,15 +55,36 @@ def printanalytics(overallstats,limitfail):
         overallcost = overallstats[x][7]
         totaldestroy = overallstats[x][8]
         num = overallstats[x][9]
+        destroyarr = overallstats[x][10]
         avgcost = overallcost / num
         avgdestroy = totaldestroy / num
+        unique, counts = np.unique(destroyarr, return_counts=True)
+
         for i in range(26):
             print(i,":","*"*i,stats[i])
+        print()
         print("Range Cost: " + "{:,}".format(mincost) + " - " + "{:,}".format(maxcost))
         print("Range of Destroys: " + "{:,}".format(mindestroy) + " - " + "{:,}".format(maxdestroy))
         print("Range of Clicks: " + "{:,}".format(minclick) + " - " + "{:,}".format(maxclick))
         print("Average Cost: " + "{:,.0f}".format(avgcost))
         print("Average Destroy: " + "{:.2f}".format(avgdestroy))
+        print()
+        print("Num of boomz(Distribution):")
+        multiple = int(len(unique) / 10)
+        remainder = len(unique) % 10
+        index = 0
+        for i in range(multiple):
+            for x in range(10):
+                percent = 100 * (counts[index] / float(num))
+                print(str(unique[index])+": "+"{:.2f}".format(percent)+"%",end=", ")
+                index += 1
+            print()
+        for i in range(remainder):
+            percent = 100 * (counts[index] / float(num))
+            print(str(unique[index]) + ": " + "{:.2f}".format(percent) + "%", end=", ")
+            index += 1
+        print()
+        print()
 def failstack(numfail):
     scrolllist = ["Pass", "Fail"]
     count = 0
@@ -235,7 +258,8 @@ while inplay:
         maxclick = 0
         totaldestroy = 0
         overallcost = 0
-        stats = [0 for i in range(26)]
+        stats = [0 for i in range(26)]  # to count the frequency at respective star
+        destroyarr = []  # contain all the number of destroy for each item
         for item in tqdm(range(numtrial),desc= "Item", ncols=80, leave=False):
             star = startlevel
             numdestroy = 0
@@ -324,6 +348,7 @@ while inplay:
                         printavg(totaldestroy, overallcost, item)
                     printprogress(numfail, limitfail, item, numtrial)
                     sleep(0.1)
+            destroyarr.append(numdestroy)
             overallcost += totalcost
             if click > maxclick:
                 maxclick = click
@@ -347,7 +372,7 @@ while inplay:
                 print("Starting again in 3s")
                 sleep(1)
 
-        overallstats.append([stats, mindestroy, maxdestroy, mincost, maxcost, minclick, maxclick, overallcost, totaldestroy, numtrial])
+        overallstats.append([stats, mindestroy, maxdestroy, mincost, maxcost, minclick, maxclick, overallcost, totaldestroy, numtrial,destroyarr])
     os.system('cls')
     print("Summary:")
     # printoverallrates(totalsuccess, totalfailm, totalfaild, totaldestroy)
