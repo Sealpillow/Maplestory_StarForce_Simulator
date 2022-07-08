@@ -1,5 +1,29 @@
 # Maplestory_StarForce_Simulator
 
+## Starforce <br/>
+Star Force Enhancement is the additional enhancement after the equipment's upgrade slots are fully used up. <br/>
+Infuse stars into your equipment for stat bonuses! This system costs mesos to use.<br/>
+
+### Success rate table <br/>
+![image](https://user-images.githubusercontent.com/51332449/178035149-4ff8be95-e1d6-46c4-bced-e434a2617540.png)<br/>
+
+### Starforce events <br/>
+Starforce events can affect the success rate at different levels or reducing the cost <br/>
+Such as: <br/>
+- 1+1 stars up to 10 stars: 0 -> 12 stars <br/>
+- 30% discount off enhancement cost: 12 -> 15 stars <br/>
+- 100% success at 5/10/15: 15 -> 17 stars <br/>
+
+### Other factors affecting starforce rates and cost <br/>
+- Safeguard
+- StarCatcher
+- MVP Silver/Gold/Diamond/Red
+
+### FailStack <br/>
+A Failstack is an indicator of the times you have continuously failed at enhancement <br/>
+In Maplestory there is a superstition where they scroll lv 10 weapon with 30% spell trace,<br/>
+after x amount of fails, they then star force the intended equipment <br/>
+
 ## Prerequisite
 Download numpy and tqdm to windows/Mac <br/>
 Numpy: https://phoenixnap.com/kb/install-numpy <br/>
@@ -10,31 +34,6 @@ Contains library of respectives rates for each star force level <br/>
 Source: https://strategywiki.org/wiki/MapleStory/Spell_Trace_and_Star_Force#Star_Force_Enhancement
 
 ## calstar.py
-
-### Starforce <br/>
-Star Force Enhancement is the additional enhancement after the equipment's upgrade slots are fully used up. <br/>
-Infuse stars into your equipment for stat bonuses! This system costs mesos to use.<br/>
-
-#### Success rate table <br/>
-![image](https://user-images.githubusercontent.com/51332449/178035149-4ff8be95-e1d6-46c4-bced-e434a2617540.png)<br/>
-
-#### Starforce events <br/>
-Starforce events can affect the success rate at different levels or reducing the cost <br/>
-Such as: <br/>
-- 1+1 stars up to 10 stars: 0 -> 12 stars <br/>
-- 30% discount off enhancement cost: 12 -> 15 stars <br/>
-- 100% success at 5/10/15: 15 -> 17 stars <br/>
-
-#### Other factors affecting starforce rates and cost <br/>
-- Safeguard
-- StarCatcher
-- MVP Silver/Gold/Diamond/Red
-
-### FailStack <br/>
-A Failstack is an indicator of the times you have continuously failed at enhancement <br/>
-In Maplestory there is a superstition where they scroll lv 10 weapon with 30% spell trace,<br/>
-after x amount of fails, they then star force the intended equipment <br/>
-
 
 ### Without Fail Stack
 ![image](https://user-images.githubusercontent.com/51332449/178011695-10ed2c72-b2ee-4d59-8aef-bf4a0250754d.png) <br/>
