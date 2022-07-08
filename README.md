@@ -32,7 +32,7 @@ Such as: <br/>
 
 ### FailStack <br/>
 A Failstack is an indicator of the times you have continuously failed at enhancement <br/>
-In Maplestory there is a superstition where they scroll rubbish weapon with 30% spell trace,<br/>
+In Maplestory there is a superstition where they scroll lv 10 weapon with 30% spell trace,<br/>
 after x amount of fails, they then star force the intended equipment <br/>
 
 
